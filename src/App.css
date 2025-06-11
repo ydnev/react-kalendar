@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f4efe9; /* jemné, zemitě pastelové pozadí */
+}
+
+.app-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kalendar-wrapper {
+  background-color: #f9f6f1; /* světle béžová */
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  display: inline-block;
+  position: relative;
+  overflow: hidden; /* skryje vizuální přesah */
+}
+
+.kalendar-nadpis {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #5e4b3c; /* zemitá barva textu */
+}
