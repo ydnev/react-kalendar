@@ -1,14 +1,3 @@
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f4efe9;
-  display: flex;
-  justify-content: center; /* vodorovné centrování */
-  align-items: center;     /* svislé centrování */
-}
-
 /* Kalendář – základní styly */
 .kalendar {
   width: 420px;
@@ -116,4 +105,21 @@ html, body, #root {
   color: white;
   font-weight: 700;
   box-shadow: 0 0 15px rgba(80, 60, 40, 0.3);
+}
+
+.kalendar-wrapper {
+  background-color: #f9f1f6; /* světle béžová */
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  display: inline-block;
+  position: relative;
+  overflow: hidden; /* skryje vizuální přesah */
+}
+
+.kalendar-nadpis {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #5e4b3c; /* zemitá barva textu */
 }

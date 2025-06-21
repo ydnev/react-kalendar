@@ -23,12 +23,37 @@ a:hover {
 }
 
 body {
+  background-image: url('/images/les.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
 }
+/* proměnlivé pozadi */
+/* body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBackground 10s ease infinite;
+  font-family: 'Poppins', sans-serif;
+}
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} */
+
 
 h1 {
   font-size: 3.2em;

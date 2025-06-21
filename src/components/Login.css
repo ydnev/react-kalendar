@@ -2,13 +2,12 @@
   max-width: 400px;
   margin: 80px auto;
   padding: 40px;
-  background: linear-gradient(145deg, #f5f7fa, #c3cfe2);
+  background: linear-gradient(145deg, #e7a269, #77542c);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 60px 30px rgba(0, 0, 0, 0.5);
   font-family: 'Poppins', sans-serif;
   color: #333;
 }
-
 
 .login-form {
   display: flex;
@@ -44,16 +43,24 @@
 }
 
 .login-button {
-  padding: 12px;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBackground 10s ease infinite;
+  font-family: 'Poppins', sans-serif;
+}
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .login-button:hover {
-  background-color: #0056b3;
+  box-shadow: 0 0 6px 6px rgba(12, 1, 61, 0.11);
 }
