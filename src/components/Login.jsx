@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Login.css';
 
 function Login({ onLoginSuccess }) {
     const [email, setEmail] = useState('');
@@ -10,17 +11,13 @@ function Login({ onLoginSuccess }) {
 
         // VALIDACE – kontrola, že pole nejsou prázdná
         if (email.trim() === '' || password.trim() === '') {
-            setError('Vyplňte email i heslo.');
+            setError('Email i heslo musí být vyplněny.  ');
             return;
         }
 
-        // KONKRÉTNÍ email a heslo (např. admin@example.com a 1234)
-        const validEmail = 'admin@example.com';
-        const validPassword = '1234';
-
-        if (email === validEmail && password === validPassword) {
+        // Kontrola údajů. PROTEĎ: jen KONKRÉTNÍ email a heslo (kazdy muze videt pres tools!!!)
+        if (email === 'a@a.a' && password === '1234') {
             setError('');
-            console.log('Přihlášení úspěšné');
             onLoginSuccess(); // Přihlášení OK – spustí se funkce z App.jsx
         } else {
             setError('Neplatný email nebo heslo.');
@@ -28,34 +25,38 @@ function Login({ onLoginSuccess }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Přihlášení</h2>
+        <div className="login-wrapper">
+            <form onSubmit={handleSubmit} className="login-form">
+                <h2 className="login-title">Přihlášení</h2>
 
-            <input 
-                type="email" 
-                placeholder="Email"
-                value={email}
-                onChange={(e) => {
-                    setEmail(e.target.value);
-                    setError('');
-                }}
-            />
+                {error && <p className="login-error">{error}</p>}
 
-            <input 
-                type="password" 
-                placeholder="Heslo"
-                value={password}
-                onChange={(e) => {
-                    setPassword(e.target.value);
-                    setError('');
-                }}
-            />
+                <input 
+                    type="email" 
+                    placeholder="Email"
+                    className="login-input"
+                    value={email}
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                        setError('');
+                    }}
+                />
 
-            <button type="submit">Přihlásit se</button>
+                <input 
+                    type="password" 
+                    placeholder="Heslo"
+                    className="login-input"
+                    value={password}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                        setError('');
+                    }}
+                />
 
-            {/* Zobrazení chyby */}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-        </form>
+                <button type="submit" className="login-button">Přihlásit se</button>
+                
+            </form>
+        </div>
     );
 }
 
