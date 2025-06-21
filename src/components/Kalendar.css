@@ -82,7 +82,7 @@ html, body, #root {
 
 /* Pevná výška dat – vždy 6 řádků */
 .dates {
-  height: calc(6 * 60px + 5 * 10px); /* 6 řádků + 5 mezer */
+  height: calc(6 * 80px + 5 * 10px); /* 6 řádků + 5 mezer */
 }
 
 /* Jednotlivý den */
