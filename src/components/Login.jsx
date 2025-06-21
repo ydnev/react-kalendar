@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
 
 function Login({ onLoginSuccess }) {
-    //vytvoření stavů pro email a heslo
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(''); // Stav pro chybovou zprávu
-     
-    //funkce pro odeslání formuláře
+    const [error, setError] = useState('');
+
     const handleSubmit = (e) => {
-    e.preventDefault(); // zabráníme reloadu stránky
+        e.preventDefault();
 
-    // VALIDACE – kontrola, že obě pole jsou vyplněná
-    if (email.trim() === '' || password.trim() === '') {
-        console.log('Chyba: Email nebo heslo není vyplněné.');
-        return; // zastaví odeslání, protože data nejsou validní
-    }
+        // VALIDACE – kontrola, že pole nejsou prázdná
+        if (email.trim() === '' || password.trim() === '') {
+            setError('Vyplňte email i heslo.');
+            return;
+        }
 
-    // Pokud validace projde, pokračujeme
-    console.log('Přihlašuji se s:', email, password);
-};
+        // KONKRÉTNÍ email a heslo (např. admin@example.com a 1234)
+        const validEmail = 'admin@example.com';
+        const validPassword = '1234';
 
- return (
+        if (email === validEmail && password === validPassword) {
+            setError('');
+            console.log('Přihlášení úspěšné');
+            onLoginSuccess(); // Přihlášení OK – spustí se funkce z App.jsx
+        } else {
+            setError('Neplatný email nebo heslo.');
+        }
+    };
+
+    return (
         <form onSubmit={handleSubmit}>
             <h2>Přihlášení</h2>
 
@@ -30,7 +37,7 @@ function Login({ onLoginSuccess }) {
                 value={email}
                 onChange={(e) => {
                     setEmail(e.target.value);
-                    console.log("Změna emailu:", e.target.value);
+                    setError('');
                 }}
             />
 
@@ -40,11 +47,14 @@ function Login({ onLoginSuccess }) {
                 value={password}
                 onChange={(e) => {
                     setPassword(e.target.value);
-                console.log("Změna hesla:", e.target.value);
+                    setError('');
                 }}
             />
 
             <button type="submit">Přihlásit se</button>
+
+            {/* Zobrazení chyby */}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
     );
 }

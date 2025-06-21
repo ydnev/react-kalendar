@@ -13,18 +13,18 @@ function App() {
   };
 
   return (
-    <div className="app-wrapper"> {/* Hlavní obal celé aplikace */}
+    <div className="app-wrapper"> {/* Obal celé aplikace */}
       
       {isLoggedIn ? ( // Podmínka: pokud je uživatel přihlášen...
         <div className="kalendar-wrapper"> {/* Zobrazí se kalendář */}
           <h1 className="kalendar-nadpis">Kalendář pro booking</h1>
           <Kalendar /> {/* Komponenta kalendáře */}
         </div>
-      ) : ( // Jinak (uživatel ještě není přihlášen)...
+      ) : ( // Jinak: (=uživatel ještě není přihlášen)...
         <div className="login-wrapper"> {/* Zobrazí se přihlašovací formulář */}
           <h2>Přihlášení uživatele</h2>
           <Login onLoginSuccess={handleLoginSuccess} /> 
-          {/* Komponentě Login předáváme funkci, která se má spustit po úspěšném přihlášení */}
+          {/* Komponentě Login předána fce, která se má spustit po úspěšném přihlášení */}
         </div>
       )}
 
@@ -32,4 +32,4 @@ function App() {
   );
 }
 
-export default App; // Exportujeme komponentu App jako hlavní komponentu celé aplikace
+export default App; // Export komponenty App jako hlavní komponenty celé aplikace
