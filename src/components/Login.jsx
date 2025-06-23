@@ -16,7 +16,7 @@ function Login({ onLoginSuccess }) {
         }
 
         // Kontrola údajů. PROTEĎ: jen KONKRÉTNÍ email a heslo (kazdy muze videt pres tools!!!)
-        if (email === 'a@a.a' && password === '1234') {
+        if (email === 'y@y.y' && password === '1357') {
             setError('');
             onLoginSuccess(); // Přihlášení OK – spustí se funkce z App.jsx
         } else {

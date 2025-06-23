@@ -12,6 +12,7 @@ const nazvyDnu = [
 
 function Kalendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDay, setSelectedDay] = useState(null);
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -26,6 +27,14 @@ function Kalendar() {
     setCurrentDate(newDate);
   };
 
+  const handleDateClick = (day) => {
+    setSelectedDay(day);
+  };
+
+  const handleCloseOverlay = () => {
+    setSelectedDay(null);
+  };
+  
   const renderDates = () => {
     const dates = [];
 
@@ -42,7 +51,12 @@ function Kalendar() {
         year === today.getFullYear();
 
       dates.push(
-        <div className={`date ${isToday ? 'today' : ''}`} key={`day-${day}`}>
+        <div 
+          className={`date ${isToday ? 'today' : ''}`} 
+          // alternativni zapis tehoz: className={isToday ? 'date today' : 'date'}
+          key={`day-${day}`}
+          onClick={() => handleDateClick(day)}
+        >
           {day}
         </div>
       );
@@ -59,22 +73,34 @@ function Kalendar() {
   };
 
   return (
-    <div className="kalendar">
-      <div className="header">
-        <button onClick={() => changeMonth(-1)}>&lt;</button>
-        <div>{`${nazvyMesicu[month]} ${year}`}</div>
-        <button onClick={() => changeMonth(1)}>&gt;</button>
-      </div>
+    <div className={`kalendar-wrapper ${selectedDay ? 'blurred' : ''}`}> {/* 🟩 Přidáno */}
+      <div className="kalendar">
+        <div className="header">
+          <button onClick={() => changeMonth(-1)}>&lt;</button>
+          <div>{`${nazvyMesicu[month]} ${year}`}</div>
+          <button onClick={() => changeMonth(1)}>&gt;</button>
+        </div>
 
-      <div className="days">
-        {nazvyDnu.map((day, idx) => (
-          <div className="day" key={idx}>{day}</div>
-        ))}
-      </div>
+        <div className="days">
+          {nazvyDnu.map((day, idx) => (
+            <div className="day" key={idx}>{day}</div>
+          ))}
+        </div>
 
-      <div className="dates">
-        {renderDates()}
+        <div className="dates">
+          {renderDates()}
+        </div>
       </div>
+    
+      {selectedDay && (
+        <div className="overlay" onClick={handleCloseOverlay}>
+          <div className="selected-date">
+            <div>{selectedDay}. {nazvyMesicu[month]} {year}</div>
+            <p>(Klikni pro zavření)</p>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
