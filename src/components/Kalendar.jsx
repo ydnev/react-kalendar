@@ -94,9 +94,10 @@ function Kalendar() {
     
       {selectedDay && (
         <div className="overlay" onClick={handleCloseOverlay}>
-          <div className="selected-date">
+          <div className="selected-date" onClick={(e) => e.stopPropagation()}> 
+            <button className="close-button" onClick={handleCloseOverlay}>×</button> {/* Křížek */}
             <div>{selectedDay}. {nazvyMesicu[month]} {year}</div>
-            <p>(Klikni pro zavření)</p>
+            <p>(Klikni mimo nebo na křížek pro zavření)</p>
           </div>
         </div>
       )}

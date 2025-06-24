@@ -152,6 +152,7 @@
 
 /* Zvětšený den */
 .selected-date {
+  position: relative;
   background-color: white;
   padding: 2rem;
   border-radius: 15px;
@@ -171,4 +172,22 @@
 @keyframes zoomIn {
   from { transform: scale(0.5); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+/* Křížek v pravém horním rohu okýnka */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover {
+  color: #000;
 }
