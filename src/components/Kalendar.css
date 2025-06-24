@@ -51,6 +51,7 @@
   outline: none;
 }
 
+
 /* Dny a datumy */
 .days, .dates {
   display: grid;

@@ -27,6 +27,10 @@ function Kalendar() {
     setCurrentDate(newDate);
   };
 
+  const goToToday = () => {
+    setCurrentDate(new Date());
+  };
+
   const handleDateClick = (day) => {
     setSelectedDay(day);
   };
@@ -73,12 +77,13 @@ function Kalendar() {
   };
 
   return (
-    <div className={`kalendar-wrapper ${selectedDay ? 'blurred' : ''}`}> {/* 🟩 Přidáno */}
+    <div className={`kalendar-wrapper ${selectedDay ? 'blurred' : ''}`}>
       <div className="kalendar">
         <div className="header">
           <button onClick={() => changeMonth(-1)}>&lt;</button>
           <div>{`${nazvyMesicu[month]} ${year}`}</div>
           <button onClick={() => changeMonth(1)}>&gt;</button>
+          <button className="today-button" onClick={goToToday}> Dnes </button>
         </div>
 
         <div className="days">
