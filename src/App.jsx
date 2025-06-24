@@ -17,12 +17,12 @@ function App() {
       
       {isLoggedIn ? ( // Podmínka: pokud je uživatel přihlášen...
         <div className="kalendar-wrapper"> {/* Zobrazí se kalendář */}
-          <h1 className="kalendar-nadpis">Kalendář pro booking</h1>
+          <h1 className="kalendar-nadpis">Rezervační systém</h1>
           <Kalendar /> {/* Komponenta kalendáře */}
         </div>
       ) : ( // Jinak: (=uživatel ještě není přihlášen)...
         <div className="login-wrapper"> {/* Zobrazí se přihlašovací formulář */}
-          <h2>Přihlášení uživatele</h2>
+          <h2>Bubický booking</h2>
           <Login onLoginSuccess={handleLoginSuccess} /> 
           {/* Komponentě Login předána fce, která se má spustit po úspěšném přihlášení */}
         </div>

@@ -7,10 +7,12 @@
   user-select: none;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
   gap: 20px;
 }
 
-/* Hlavička – pozadí oválku + šipky zarovnány */
+/* Nadpisek měsíce */
 .header {
   display: flex;
   justify-content: space-between;
@@ -46,19 +48,7 @@
 }
 
 .header button:focus {
-  outline: none; /* zruší výchozí černý rámeček */
-  background: #d9cbb1;
-  border: none;
-  width: 36px;
-  height: 50px;
-  font-size: 1.2em;
-  color: #5e4b3c;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(120, 100, 80, 0.3);
-  transition: background-color 0.3s, transform 0.2s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  outline: none;
 }
 
 /* Dny a datumy */
@@ -71,12 +61,13 @@
 
 /* Pevná výška dat – vždy 6 řádků */
 .dates {
-  height: calc(6 * 80px + 5 * 10px); /* 6 řádků + 5 mezer */
+  flex-grow: 1;
+  overflow: auto;
 }
 
 /* Jednotlivý den */
 .date {
-  padding: 14px 0;
+  padding: 8px 0;
   background-color: #e9e4d4;
   border-radius: 12px;
   font-size: 1.1em;
@@ -85,7 +76,7 @@
   transition: background-color 0.3s, box-shadow 0.3s;
   user-select: none;
   box-shadow: 0 3px 8px rgba(120, 100, 80, 0.2);
-  min-height: 60px;
+  min-height: 30px;
 }
 
 .date.empty {
@@ -109,27 +100,27 @@
 
 .kalendar-wrapper {
   background-color: #f9f1f6; /* světle béžová */
-  padding: 50px;
   border-radius: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   display: inline-block;
   position: relative;
-  overflow: hidden; /* skryje vizuální přesah */
+  max-height: 100vh;
+  overflow: hidden;
+  padding: 10px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  transition: filter 0.3s ease;
 }
 
 .kalendar-nadpis {
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 2em;
-  color: #5e4b3c; /* zemitá barva textu */
+  color: #5e4b3c;
+  display: flex;
+  justify-content: center;
 }
 
-
-/* Přidáno pro rozostření */
-.kalendar-wrapper {
-  position: relative;
-  transition: filter 0.3s ease;
-}
 
 .kalendar-wrapper.blurred .kalendar {
   filter: blur(6px);
