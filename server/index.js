@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 // Umožní požadavky z frontendu (Vercel)
 app.use(cors({
-  origin: 'https://react-kalendar.vercel.app/', // změň na svou
+  origin: 'https://react-kalendar.vercel.app/',
   credentials: true
 }));
 
