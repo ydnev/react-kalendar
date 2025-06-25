@@ -23,4 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-node_modules
+# Ignorovat frontend node_modules
+node_modules/
+
+# Ignorovat backend node_modules
+server/node_modules/
