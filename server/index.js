@@ -19,6 +19,12 @@ const corsOptions = {
   credentials: true
 };
 
+app.use(cors({
+  origin: 'https://react-kalendar.vercel.app',
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  methods: ['GET', 'POST', 'OPTIONS']
+}));
 app.use((req, res, next) => {
   console.log('Request origin:', req.headers.origin);
   next();
