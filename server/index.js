@@ -15,10 +15,14 @@ const DUMMY_USER = {
 
 // CORS konfigurace
 const corsOptions = {
-  origin: 'https://react-kalendar.vercel.app',  // ✅ frontend doména
+  origin: ['https://react-kalendar.vercel.app'],  // ✅ frontend doména
   credentials: true
 };
 
+app.use((req, res, next) => {
+  console.log('Request origin:', req.headers.origin);
+  next();
+});
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
