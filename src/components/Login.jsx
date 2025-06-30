@@ -6,23 +6,24 @@ function Login({ onLoginSuccess }) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-const handleSubmit = (e) => {
-    e.preventDefault();
+    const TEST_EMAIL = 'o@o.o';
+    const TEST_PASSWORD = '1357';
 
-    if (email.trim() === '' || password.trim() === '') {
-        setError('Email i heslo musí být vyplněny.');
-        return;
-    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    // Dočasné přihlašování bez backendu
-    if (email === 'o@o.o' && password === '1357') {
-        setError('');
-        onLoginSuccess(); // Login úspěšný – pokračuj dál
-    } else {
-        setError('Neplatný email nebo heslo.');
-    }
-};
+        if (email.trim() === '' || password.trim() === '') {
+            setError('Email i heslo musí být vyplněny.');
+            return;
+        }
 
+        if (email === TEST_EMAIL && password === TEST_PASSWORD) {
+            setError('');
+            onLoginSuccess(); // Úspěšné přihlášení
+        } else {
+            setError('Neplatný email nebo heslo.');
+        }
+    };
 
     return (
         <div className="login-wrapper">
@@ -54,7 +55,6 @@ const handleSubmit = (e) => {
                 />
 
                 <button type="submit" className="login-button">Přihlásit se</button>
-                
             </form>
         </div>
     );
