@@ -6,23 +6,23 @@ function Login({ onLoginSuccess }) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+const handleSubmit = (e) => {
+    e.preventDefault();
 
-        // VALIDACE – kontrola, že pole nejsou prázdná
-        if (email.trim() === '' || password.trim() === '') {
-            setError('Email i heslo musí být vyplněny.  ');
-            return;
-        }
+    if (email.trim() === '' || password.trim() === '') {
+        setError('Email i heslo musí být vyplněny.');
+        return;
+    }
 
-        // Kontrola údajů. PROTEĎ: jen KONKRÉTNÍ email a heslo (kazdy muze videt pres tools!!!)
-        if (email === 'y@y.y' && password === '1357') {
-            setError('');
-            onLoginSuccess(); // Přihlášení OK – spustí se funkce z App.jsx
-        } else {
-            setError('Neplatný email nebo heslo.');
-        }
-    };
+    // Dočasné přihlašování bez backendu
+    if (email === 'o@o.o' && password === '1357') {
+        setError('');
+        onLoginSuccess(); // Login úspěšný – pokračuj dál
+    } else {
+        setError('Neplatný email nebo heslo.');
+    }
+};
+
 
     return (
         <div className="login-wrapper">
