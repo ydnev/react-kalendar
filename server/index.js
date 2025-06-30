@@ -19,19 +19,20 @@ const corsOptions = {
   credentials: true
 };
 
-app.use(cors({
-  origin: 'https://react-kalendar.vercel.app',
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-  methods: ['GET', 'POST', 'OPTIONS']
-}));
+// ✅ Přesná CORS konfigurace – opravuje CORS error s credentials
 app.use((req, res, next) => {
-  console.log('Request origin:', req.headers.origin);
+  res.header("Access-Control-Allow-Origin", "https://react-kalendar.vercel.app");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  
+  // OPTIONS preflight – vrací 200 okamžitě
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+
   next();
 });
-app.use(cors(corsOptions));
-app.use(express.json());
-app.use(cookieParser());
 
 const isProduction = process.env.NODE_ENV === 'production';
 
